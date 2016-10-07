@@ -1,13 +1,10 @@
 var row = 10;
 var col = 10;
 var bodyWidth = 800;
+var canPaint = false;
 
 $(document).ready(function() {
-	createGrid(row,col);
-
-	
-
-	
+	createGrid(row,col);	
 });
 
 
@@ -30,8 +27,24 @@ var createGrid = function(row,col)
 			});
 		}
 	}
+
+	$("body").mousedown(function(){
+		canPaint = true;
+	});
+	
 	$(".grid").hover(function() {
-		$(this).css('background-color', 'black');
+		if(canPaint)
+		{
+			$(this).css('background-color', 'black');
+		}
+	});
+	$(".grid").click(function() {
+
+			$(this).css('background-color', 'black');
+	});
+
+	$("body").mouseup(function(){
+		canPaint = false;
 	});
 }
 
